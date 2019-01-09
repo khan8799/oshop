@@ -1,0 +1,70 @@
+<div id="login-box">
+  <form #f="ngForm">
+    <div class="left">
+      <h1>Sign up</h1>
+      
+      <div class="form-group">
+        <input 
+          #name="ngModel" 
+          name="name" 
+          [(ngModel)]="user.name" 
+          type="text" 
+          class="form-control"
+          placeholder="Name" 
+          required>
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name.errors.required">Name is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input 
+          #email="ngModel" 
+          name="email" 
+          [(ngModel)]="user.email" 
+          type="text" 
+          class="form-control" 
+          placeholder="Email" 
+          required>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors.required">Email is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input 
+          #password="ngModel" 
+          name="password" 
+          [(ngModel)]="user.password" 
+          type="text" 
+          class="form-control" 
+          placeholder="Password" 
+          required>
+        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+          <div *ngIf="password.errors.required">Password is required.</div>
+        </div>
+      </div>
+      <button 
+      [disabled]="!f.valid"
+      (click)="userRegister()"
+      class="btn btn-primary">Place Order</button>
+    </div>
+  </form>
+  
+  <div class="right social_icon">
+    <span class="loginwith"><strong>Log in with<br />social network</strong></span>
+    
+    <button 
+      (click)="facebookLogin()"
+      class="social-signin facebook"
+      >Log in with <span><i class="fa fa-facebook-square"></i></span></button>
+    <button 
+      (click)="twitterLogin()"
+      class="social-signin twitter"
+      >Log in with <span><i class="fa fa-twitter-square"></i></span></button>
+    <button 
+      (click)="googleLogin()"
+      class="social-signin google"
+      >Log in with <span><i class="fa fa-google-plus-square"></i></span></button>
+  </div>
+  <div class="or">OR</div>
+</div>
+
